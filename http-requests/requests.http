@@ -1,0 +1,14 @@
+### GET request to example server
+GET http://localhost:8080/hello
+
+### GET all users in the database
+GET http://localhost:8080/users
+
+### POST create a new User entity in database
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "name",
+  "password": "password"
+}
