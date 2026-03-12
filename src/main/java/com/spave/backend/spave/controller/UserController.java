@@ -21,14 +21,18 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
-    private JwtService jwtService;
-    private AuthenticationManager authenticationManager;
-
+    private final UserService userService;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
     @GetMapping("/hello")
     public String helloWorld() {
         return "HELLO WORLD";
+    }
+
+    @GetMapping("authplz")
+    public String beConnected() {
+        return "YOU ARE CONNECTED GOOD JOB";
     }
 
     @GetMapping("/users")
@@ -50,7 +54,7 @@ public class UserController {
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(authRequest.getUsername());
         } else {
-            throw new UsernameNotFoundException("Invalid user request !");
+            throw new UsernameNotFoundException("Invalid user request!");
         }
     }
 }
