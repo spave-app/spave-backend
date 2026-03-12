@@ -1,6 +1,6 @@
 package com.spave.backend.spave.controller;
 
-import com.spave.backend.spave.model.User;
+import com.spave.backend.spave.model.UserInfo;
 import com.spave.backend.spave.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest
-public class UserControllerTest {
+public class UserInfoControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -40,7 +40,7 @@ public class UserControllerTest {
 
     @Test
     void getUsers_returns200() throws Exception {
-        when(userService.getUsers()).thenReturn(List.of(new User()));
+        when(userService.getUsers()).thenReturn(List.of(new UserInfo()));
 
         mockMvc.perform(get("/users"))
                 .andExpect(status().isOk())
