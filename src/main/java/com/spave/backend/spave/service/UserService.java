@@ -35,6 +35,18 @@ public class UserService implements UserDetailsService {
         return userRepository.save(newUserInfo);
     }
 
+    public boolean emailExists(String email) {
+        return userRepository.findByEmail(email).isPresent();
+    }
+
+    public void registerUser(String email, String password) {
+        UserInfo user = new UserInfo();
+        user.setEmail(email);
+        user.setPassword(encoder.encode(password));
+        user.setRoles("ROLE_USER");
+        userRepository.save(user);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<UserInfo> userInfo = userRepository.findByEmail(email);
