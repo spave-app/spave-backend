@@ -38,11 +38,11 @@ public class Venue {
     private String source;
 
     @CreationTimestamp
-    @Column(name = "created_at", insertable = false, updatable = false, nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at", insertable = false, nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
     @Email
