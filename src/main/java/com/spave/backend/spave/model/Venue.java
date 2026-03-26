@@ -1,11 +1,15 @@
 package com.spave.backend.spave.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.URL;
 
 import java.util.UUID;
 import java.time.Instant;
 
+@Data
 @Entity
 @Table(name = "venues")
 public class Venue {
@@ -33,9 +37,11 @@ public class Venue {
     @Column(name = "source", nullable = true)
     private String source;
 
+    @CreationTimestamp
     @Column(name = "created_at", insertable = false, updatable = false, nullable = false)
     private Instant createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", insertable = false, nullable = false)
     private Instant updatedAt;
 
@@ -49,6 +55,4 @@ public class Venue {
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
-
-
 }
