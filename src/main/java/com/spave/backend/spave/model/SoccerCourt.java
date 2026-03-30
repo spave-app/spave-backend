@@ -86,4 +86,7 @@ public class SoccerCourt {
     @Digits(integer = 8, fraction = 2)
     @Column(name = "price_max")
     private BigDecimal priceMax;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }
