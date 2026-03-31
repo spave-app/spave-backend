@@ -87,6 +87,6 @@ public class SoccerCourt {
     @Column(name = "price_max")
     private BigDecimal priceMax;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", columnDefinition = "TEXT")
     private String imageUrl;
 }
