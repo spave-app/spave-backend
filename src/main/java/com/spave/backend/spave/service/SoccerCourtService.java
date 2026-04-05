@@ -1,5 +1,6 @@
 package com.spave.backend.spave.service;
 
+import com.spave.backend.spave.dto.CourtLocationDTO;
 import com.spave.backend.spave.model.SoccerCourt;
 import com.spave.backend.spave.repository.SoccerCourtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,9 @@ public class SoccerCourtService {
 
     public Optional<SoccerCourt> getCourtById(UUID id) {
         return soccerCourtRepository.findById(id);
+    }
+
+    public List<CourtLocationDTO> getCourtLocations() {
+        return soccerCourtRepository.findAllActiveCourtLocations();
     }
 }

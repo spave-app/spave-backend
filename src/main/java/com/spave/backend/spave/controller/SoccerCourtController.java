@@ -1,5 +1,6 @@
 package com.spave.backend.spave.controller;
 
+import com.spave.backend.spave.dto.CourtLocationDTO;
 import com.spave.backend.spave.model.SoccerCourt;
 import com.spave.backend.spave.service.SoccerCourtService;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,10 @@ public class SoccerCourtController {
         return soccerCourtService.getCourtById(id)
                 .map(court -> new ResponseEntity<>(court, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/courts/locations")
+    public ResponseEntity<List<CourtLocationDTO>> getCourtLocations() {
+        return new ResponseEntity<>(soccerCourtService.getCourtLocations(), HttpStatus.OK);
     }
 }
