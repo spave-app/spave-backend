@@ -21,4 +21,6 @@ jobs:
           cache: maven
 
       - name: Build and test
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: chmod +x ./mvnw && ./mvnw clean verify
