@@ -21,9 +21,11 @@ Backend API for Spave - a marketplace platform to discover and book sports space
 
 ### Waitlist
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/waitlist` | Join the waitlist with an email (returns 201 on success, 409 if already registered) |
+| Method | Endpoint         | Description                                                                         |
+|--------|------------------|-------------------------------------------------------------------------------------|
+| `POST` | `/waitlist`      | Join the waitlist with an email (returns 201 on success, 409 if already registered) |
+| `GET`  | `/waitlist/size` | Returns the size of the waitlist (how many people are currently inside it)          |
+
 
 ### Auth
 
