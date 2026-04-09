@@ -19,6 +19,12 @@ Backend API for Spave - a marketplace platform to discover and book sports space
 | `GET` | `/courts` | List all active courts (across all venues) |
 | `GET` | `/courts/{id}` | Get a single court (includes bookingLink for redirect) |
 
+### Waitlist
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/waitlist` | Join the waitlist with an email (returns 201 on success, 409 if already registered) |
+
 ### Auth
 
 | Method | Endpoint | Description |
