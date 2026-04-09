@@ -3,6 +3,7 @@ package com.spave.backend.spave.controller;
 import com.spave.backend.spave.model.AuthRequest;
 import com.spave.backend.spave.model.UserInfo;
 import com.spave.backend.spave.service.JwtService;
+import com.spave.backend.spave.service.MailService;
 import com.spave.backend.spave.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,11 +29,6 @@ public class UserController {
     @GetMapping("/hello")
     public String helloWorld() {
         return "HELLO WORLD";
-    }
-
-    @GetMapping("authplz")
-    public String beConnected() {
-        return "YOU ARE CONNECTED GOOD JOB";
     }
 
     @GetMapping("/users")

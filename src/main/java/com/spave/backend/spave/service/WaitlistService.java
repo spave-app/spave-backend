@@ -12,12 +12,16 @@ public class WaitlistService {
         this.waitlistRepository = waitlistRepository;
     }
 
-    public WaitlistEntry addToWaitlist(String email) {
+    public void addToWaitlist(String email) {
         if (waitlistRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("Email is already on the waitlist");
         }
         WaitlistEntry entry = new WaitlistEntry();
         entry.setEmail(email);
-        return waitlistRepository.save(entry);
+        waitlistRepository.save(entry);
+    }
+
+    public long getWaitListSize() {
+        return waitlistRepository.count();
     }
 }
