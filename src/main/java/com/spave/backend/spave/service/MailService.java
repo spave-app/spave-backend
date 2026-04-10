@@ -23,20 +23,21 @@ public class MailService {
     }
 
 
-    public void sendWaitlistConfirmation(String to) throws MessagingException, IOException {
+    public void sendWaitlistConfirmation(String to, String unsubscribeUrl) throws MessagingException, IOException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
         helper.setFrom(FROM_ADDRESS, FROM_NAME);
         helper.setTo(to);
         helper.setSubject("You're on the Spave waitlist");
-        helper.setText(loadTemplate(), true);
+        helper.setText(loadTemplate(unsubscribeUrl), true);
 
         mailSender.send(message);
     }
 
-    private String loadTemplate() throws IOException {
+    private String loadTemplate(String unsubscribeUrl) throws IOException {
         try (var in = new ClassPathResource("templates/emails/waitlist-confirmation.html").getInputStream()) {
-            return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+            String html = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+            return html.replace("{{UNSUBSCRIBE_URL}}", unsubscribeUrl);
         }
     }
 }
