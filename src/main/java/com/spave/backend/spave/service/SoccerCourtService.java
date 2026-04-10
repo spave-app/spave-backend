@@ -4,6 +4,7 @@ import com.spave.backend.spave.dto.CourtLocationDTO;
 import com.spave.backend.spave.model.SoccerCourt;
 import com.spave.backend.spave.repository.SoccerCourtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class SoccerCourtService {
         this.soccerCourtRepository = soccerCourtRepository;
     }
 
+    @Cacheable("courts")
     public List<SoccerCourt> getAllActiveCourts() {
         return soccerCourtRepository.findByIsActiveTrue();
     }
