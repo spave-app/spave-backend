@@ -3,6 +3,7 @@ package com.spave.backend.spave.controller;
 import com.spave.backend.spave.dto.CourtLocationDTO;
 import com.spave.backend.spave.model.SoccerCourt;
 import com.spave.backend.spave.service.SoccerCourtService;
+import lombok.NonNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class SoccerCourtController {
     }
 
     @GetMapping("/courts")
-    public ResponseEntity<List<SoccerCourt>> getAllActiveCourts() {
+    public ResponseEntity<@NonNull List<SoccerCourt>> getAllActiveCourts() {
         return new ResponseEntity<>(soccerCourtService.getAllActiveCourts(), HttpStatus.OK);
     }
 

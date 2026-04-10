@@ -1,7 +1,10 @@
 package com.spave.backend.spave.dto;
 
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
 public class CourtLocationDTO {
     private UUID courtId;
     private UUID venueId;
@@ -16,10 +19,4 @@ public class CourtLocationDTO {
         this.lat = lat;
         this.lng = lng;
     }
-
-    public UUID getCourtId() { return courtId; }
-    public UUID getVenueId() { return venueId; }
-    public String getVenueName() { return venueName; }
-    public Double getLat() { return lat; }
-    public Double getLng() { return lng; }
 }

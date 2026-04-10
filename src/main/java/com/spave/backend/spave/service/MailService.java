@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 @Service
@@ -22,6 +23,22 @@ public class MailService {
         this.mailSender = mailSender;
     }
 
+
+    public void sendContactFormNotification(String fromName, String fromEmail, String subject, String messageBody) throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        helper.setFrom(FROM_ADDRESS, FROM_NAME);
+        helper.setTo(FROM_ADDRESS);
+        helper.setSubject("Client contacted you");
+        helper.setText(
+                "<p><strong>From:</strong> " + fromName + " &lt;" + fromEmail + "&gt;</p>" +
+                "<p><strong>Subject:</strong> " + subject + "</p>" +
+                "<p><strong>Message:</strong></p>" +
+                "<p>" + messageBody + "</p>",
+                true
+        );
+        mailSender.send(message);
+    }
 
     public void sendWaitlistConfirmation(String to, String unsubscribeUrl) throws MessagingException, IOException {
         MimeMessage message = mailSender.createMimeMessage();
