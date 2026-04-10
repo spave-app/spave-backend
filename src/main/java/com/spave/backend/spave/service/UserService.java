@@ -2,6 +2,7 @@ package com.spave.backend.spave.service;
 
 import com.spave.backend.spave.model.UserInfo;
 import com.spave.backend.spave.repository.UserRepository;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -48,7 +49,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    @NonNull
+    public UserDetails loadUserByUsername(@NonNull String email) throws UsernameNotFoundException {
         Optional<UserInfo> userInfo = userRepository.findByEmail(email);
 
         if (userInfo.isEmpty()) {
