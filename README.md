@@ -27,6 +27,22 @@ Backend API for Spave - a marketplace platform to discover and book sports space
 | `GET`  | `/waitlist/size` | Returns the size of the waitlist (how many people are currently inside it)          |
 
 
+### Contact
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/contact` | Submit a contact form — saves the entry and sends an email notification to contact@spaveapp.com |
+
+**Request body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "subject": "Booking inquiry",
+  "message": "I'd like to know more about available courts this weekend."
+}
+```
+
 ### Auth
 
 | Method | Endpoint | Description |
