@@ -1,4 +1,5 @@
 package com.spave.backend.spave.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class Address {
     @Column(columnDefinition = "uuid", updatable = false, nullable = false)
     private UUID id;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venue_id", nullable = false, unique = true)
     @ToString.Exclude

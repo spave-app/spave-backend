@@ -1,5 +1,4 @@
 package com.spave.backend.spave.model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -57,7 +56,6 @@ public class Venue {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "venue", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "venue", fetch = FetchType.EAGER)
     private Address address;
 }
